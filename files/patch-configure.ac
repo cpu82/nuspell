@@ -1,0 +1,10 @@
+--- configure.ac.orig	2018-06-13 00:21:03.378577000 +0200
++++ configure.ac	2018-06-13 00:26:41.305724000 +0200
+@@ -27,6 +27,7 @@
+ BOOST_REQUIRE([1.62.0])
+ BOOST_LOCALE
+ PKG_CHECK_MODULES([ICU], [icu-uc])
++PKG_CHECK_MODULES([CATCH], [catch])
+ AC_REQUIRE_AUX_FILE([tap-driver.sh])
+ 
+ # Checks for header files.
