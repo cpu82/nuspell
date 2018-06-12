@@ -19,12 +19,11 @@ BUILD_DEPENDS=	bash:shells/bash \
 LIB_DEPENDS=	libboost_thread.so:devel/boost-libs \
 		libicuuc.so:devel/icu
 
-CONFLICTS_INSTALL=	tinker-[0-9]*
+CONFLICTS_INSTALL=	hunspell-[0-9]* tinker-[0-9]*
 
 USES=		autoreconf compiler:c++14-lang iconv libtool:keepla ncurses \
 		pathfix perl5 pkgconfig readline shebangfix
 SHEBANG_FILES=	src/tools/ispellaff2myspell tests/test.sh
-USE_LDCONFIG=	yes
 USE_PERL5=	run
 CONFIGURE_ARGS=	--with-readline --with-ui
 GNU_CONFIGURE=	yes
