@@ -14,8 +14,7 @@ LICENSE_FILE_LGPL21+=	${_LICENSE_STORE}/LGPL21
 LICENSE_FILE_LGPL3=	${WRKSRC}/COPYING.LESSER
 LICENSE_FILE_MPL11=	${_LICENSE_STORE}/MPL11
 
-BUILD_DEPENDS=	catch>0:devel/catch \
-		bash:shells/bash
+BUILD_DEPENDS=	catch>0:devel/catch
 LIB_DEPENDS=	libboost_thread.so:devel/boost-libs \
 		libicuuc.so:devel/icu
 
