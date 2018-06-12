@@ -1,0 +1,64 @@
+--- src/hunspell/hunspell.cxx.orig	2018-06-12 10:24:19 UTC
++++ src/hunspell/hunspell.cxx
+@@ -112,7 +112,7 @@ class HunspellImpl (public)
+   int suggest(char*** slst, const char* word);
+   int suffix_suggest(char*** slst, const char* root_word);
+   void free_list(char*** slst, int n);
+-  char* get_dic_encoding();
++  const char* get_dic_encoding();
+   int analyze(char*** slst, const char* word);
+   int stem(char*** slst, const char* word);
+   int stem(char*** slst, char** morph, int n);
+@@ -1828,7 +1828,7 @@ void HunspellImpl::free_list(char*** slst, int n) {
+   }
+ }
+ 
+-char* HunspellImpl::get_dic_encoding() {
++const char* HunspellImpl::get_dic_encoding() {
+   return &encoding[0];
+ }
+ 
+@@ -1984,8 +1984,8 @@ void Hunspell::free_list(char*** slst, int n) {
+   m_Impl->free_list(slst, n);
+ }
+ 
+-char* Hunspell::get_dic_encoding() {
+-  return m_Impl->get_dic_encoding();
++const char* Hunspell::get_dic_encoding() const {
++  return Hunspell_get_dic_encoding((Hunhandle*)(this));
+ }
+ 
+ int Hunspell::analyze(char*** slst, const char* word) {
+@@ -2042,8 +2042,8 @@ int Hunspell_spell(Hunhandle* pHunspell, const char* w
+   return reinterpret_cast<HunspellImpl*>(pHunspell)->spell(word);
+ }
+ 
+-char* Hunspell_get_dic_encoding(Hunhandle* pHunspell) {
+-  return reinterpret_cast<HunspellImpl*>(pHunspell)->get_dic_encoding();
++const char* Hunspell_get_dic_encoding(Hunhandle* pHunspell) {
++  return (reinterpret_cast<HunspellImpl*>(pHunspell)->get_dict_encoding()).c_str();
+ }
+ 
+ int Hunspell_suggest(Hunhandle* pHunspell, char*** slst, const char* word) {
+--- src/hunspell/hunspell.h.orig	2018-06-12 10:24:19 UTC
++++ src/hunspell/hunspell.h
+@@ -68,7 +68,7 @@ LIBHUNSPELL_DLL_EXPORTED int Hunspell_add_dic(Hunhandl
+  */
+ LIBHUNSPELL_DLL_EXPORTED int Hunspell_spell(Hunhandle* pHunspell, const char*);
+ 
+-LIBHUNSPELL_DLL_EXPORTED char* Hunspell_get_dic_encoding(Hunhandle* pHunspell);
++LIBHUNSPELL_DLL_EXPORTED const char* Hunspell_get_dic_encoding(Hunhandle* pHunspell);
+ 
+ /* suggest(suggestions, word) - search suggestions
+  * input: pointer to an array of strings pointer and the (bad) word
+--- src/hunspell/hunspell.hxx.orig	2018-06-12 10:24:19 UTC
++++ src/hunspell/hunspell.hxx
+@@ -155,7 +155,7 @@ class LIBHUNSPELL_DLL_EXPORTED Hunspell {
+   H_DEPRECATED void free_list(char*** slst, int n);
+ 
+   const std::string& get_dict_encoding() const;
+-  char* get_dic_encoding();
++  H_DEPRECATED const char* get_dic_encoding() const;
+ 
+   /* morphological functions */
+ 
