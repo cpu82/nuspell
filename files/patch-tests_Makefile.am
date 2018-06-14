@@ -1,5 +1,5 @@
---- tests/Makefile.am.orig	2018-06-13 00:23:39.358688000 +0200
-+++ tests/Makefile.am	2018-06-13 00:24:50.083969000 +0200
+--- tests/Makefile.am.orig	2018-06-14 09:57:47 UTC
++++ tests/Makefile.am
 @@ -1,21 +1,11 @@
  SUBDIRS = . suggestiontest v1cmdline
  
@@ -23,7 +23,7 @@
  TEST_EXTENSIONS = .catch
  CATCH_LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) $(top_srcdir)/tap-driver.sh
  CATCH_LOG_COMPILER = $(SHELL) $(srcdir)/catch-runner.sh
-@@ -36,9 +26,6 @@
+@@ -36,9 +26,6 @@ structures_test.cxx \
  dictionary_test.cxx \
  aff_data_test.cxx \
  catch_main.cxx

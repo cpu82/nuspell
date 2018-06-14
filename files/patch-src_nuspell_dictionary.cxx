@@ -1,6 +1,6 @@
---- src/nuspell/dictionary.cxx.orig	2018-06-13 00:10:42.597116000 +0200
-+++ src/nuspell/dictionary.cxx	2018-06-13 00:11:16.140681000 +0200
-@@ -570,8 +570,8 @@
+--- src/nuspell/dictionary.cxx.orig	2018-06-13 20:45:09 UTC
++++ src/nuspell/dictionary.cxx
+@@ -570,8 +570,8 @@ class Suffix_Iter {
  
  template <Affixing_Mode m, class CharT>
  auto Dictionary::strip_prefix_only(std::basic_string<CharT>& word) const
@@ -11,7 +11,7 @@
  {
  	auto& dic = words;
  	auto& prefixes = get_structures<CharT>().prefixes;
-@@ -591,7 +591,7 @@
+@@ -591,7 +591,7 @@ auto Dictionary::strip_prefix_only(std::basic_string<C
  			if (!cross_valid_inner_outer(word_flags, e))
  				continue;
  			// needflag check here if needed
@@ -20,7 +20,7 @@
  		}
  	}
  	return {};
-@@ -599,8 +599,8 @@
+@@ -599,8 +599,8 @@ auto Dictionary::strip_prefix_only(std::basic_string<C
  
  template <Affixing_Mode m, class CharT>
  auto Dictionary::strip_suffix_only(std::basic_string<CharT>& word) const
@@ -31,7 +31,7 @@
  {
  	auto& dic = words;
  	auto& suffixes = get_structures<CharT>().suffixes;
-@@ -626,7 +626,7 @@
+@@ -626,7 +626,7 @@ auto Dictionary::strip_suffix_only(std::basic_string<C
  			    word_flags.contains(compound_onlyin_flag))
  				continue;
  			// needflag check here if needed
@@ -40,7 +40,7 @@
  		}
  	}
  	return {};
-@@ -634,7 +634,7 @@
+@@ -634,7 +634,7 @@ auto Dictionary::strip_suffix_only(std::basic_string<C
  
  template <Affixing_Mode m, class CharT>
  auto Dictionary::strip_prefix_then_suffix(std::basic_string<CharT>& word) const
@@ -49,7 +49,7 @@
                                    const Suffix<CharT>&, const Prefix<CharT>&>>
  {
  	auto& prefixes = get_structures<CharT>().prefixes;
-@@ -658,7 +658,7 @@
+@@ -658,7 +658,7 @@ auto Dictionary::strip_prefix_then_suffix(std::basic_s
  template <Affixing_Mode m, class CharT>
  auto Dictionary::strip_pfx_then_sfx_2(const Prefix<CharT>& pe,
                                        std::basic_string<CharT>& word) const
@@ -58,7 +58,7 @@
                                    const Suffix<CharT>&, const Prefix<CharT>&>>
  {
  	auto& dic = words;
-@@ -687,7 +687,7 @@
+@@ -687,7 +687,7 @@ auto Dictionary::strip_pfx_then_sfx_2(const Prefix<Cha
  			    word_flags.contains(compound_onlyin_flag))
  				continue;
  			// needflag check here if needed
@@ -67,7 +67,7 @@
  		}
  	}
  
-@@ -696,7 +696,7 @@
+@@ -696,7 +696,7 @@ auto Dictionary::strip_pfx_then_sfx_2(const Prefix<Cha
  
  template <Affixing_Mode m, class CharT>
  auto Dictionary::strip_suffix_then_prefix(std::basic_string<CharT>& word) const
@@ -76,7 +76,7 @@
                                    const Prefix<CharT>&, const Suffix<CharT>&>>
  {
  	auto& suffixes = get_structures<CharT>().suffixes;
-@@ -720,7 +720,7 @@
+@@ -720,7 +720,7 @@ auto Dictionary::strip_suffix_then_prefix(std::basic_s
  template <Affixing_Mode m, class CharT>
  auto Dictionary::strip_sfx_then_pfx_2(const Suffix<CharT>& se,
                                        std::basic_string<CharT>& word) const
@@ -85,7 +85,7 @@
                                    const Prefix<CharT>&, const Suffix<CharT>&>>
  {
  	auto& dic = words;
-@@ -749,7 +749,7 @@
+@@ -749,7 +749,7 @@ auto Dictionary::strip_sfx_then_pfx_2(const Suffix<Cha
  			    word_flags.contains(compound_onlyin_flag))
  				continue;
  			// needflag check here if needed
@@ -94,7 +94,7 @@
  		}
  	}
  	return {};
-@@ -757,7 +757,7 @@
+@@ -757,7 +757,7 @@ auto Dictionary::strip_sfx_then_pfx_2(const Suffix<Cha
  
  template <Affixing_Mode m, class CharT>
  auto Dictionary::strip_suffix_then_suffix(std::basic_string<CharT>& word) const
@@ -103,7 +103,7 @@
                                    const Suffix<CharT>&, const Suffix<CharT>&>>
  {
  	auto& suffixes = get_structures<CharT>().suffixes;
-@@ -781,7 +781,7 @@
+@@ -781,7 +781,7 @@ auto Dictionary::strip_suffix_then_suffix(std::basic_s
  template <Affixing_Mode m, class CharT>
  auto Dictionary::strip_sfx_then_sfx_2(const Suffix<CharT>& se1,
                                        std::basic_string<CharT>& word) const
@@ -112,7 +112,7 @@
                                    const Suffix<CharT>&, const Suffix<CharT>&>>
  {
  
-@@ -808,7 +808,7 @@
+@@ -808,7 +808,7 @@ auto Dictionary::strip_sfx_then_sfx_2(const Suffix<Cha
  			//    word_flags.contains(compound_onlyin_flag))
  			//	continue;
  			// needflag check here if needed
@@ -121,7 +121,7 @@
  		}
  	}
  	return {};
-@@ -816,7 +816,7 @@
+@@ -816,7 +816,7 @@ auto Dictionary::strip_sfx_then_sfx_2(const Suffix<Cha
  
  template <Affixing_Mode m, class CharT>
  auto Dictionary::strip_prefix_then_prefix(std::basic_string<CharT>& word) const
@@ -130,7 +130,7 @@
                                    const Prefix<CharT>&, const Prefix<CharT>&>>
  {
  	auto& prefixes = get_structures<CharT>().prefixes;
-@@ -840,7 +840,7 @@
+@@ -840,7 +840,7 @@ auto Dictionary::strip_prefix_then_prefix(std::basic_s
  template <Affixing_Mode m, class CharT>
  auto Dictionary::strip_pfx_then_pfx_2(const Prefix<CharT>& pe1,
                                        std::basic_string<CharT>& word) const
@@ -139,7 +139,7 @@
                                    const Prefix<CharT>&, const Prefix<CharT>&>>
  {
  	auto& dic = words;
-@@ -866,15 +866,16 @@
+@@ -866,15 +866,16 @@ auto Dictionary::strip_pfx_then_pfx_2(const Prefix<Cha
  			//    word_flags.contains(compound_onlyin_flag))
  			//	continue;
  			// needflag check here if needed
@@ -159,7 +159,7 @@
  {
  	auto& prefixes = get_structures<CharT>().prefixes;
  	auto& suffixes = get_structures<CharT>().suffixes;
-@@ -911,7 +912,7 @@
+@@ -911,7 +912,7 @@ template <Affixing_Mode m, class CharT>
  auto Dictionary::strip_pfx_2_sfx_3(const Prefix<CharT>& pe1,
                                     const Suffix<CharT>& se1,
                                     std::basic_string<CharT>& word) const
@@ -168,7 +168,7 @@
  {
  	auto& dic = words;
  	auto& suffixes = get_structures<CharT>().suffixes;
-@@ -939,7 +940,7 @@
+@@ -939,7 +940,7 @@ auto Dictionary::strip_pfx_2_sfx_3(const Prefix<CharT>
  			//    word_flags.contains(compound_onlyin_flag))
  			//	continue;
  			// needflag check here if needed
@@ -177,7 +177,7 @@
  		}
  	}
  
-@@ -947,8 +948,9 @@
+@@ -947,8 +948,9 @@ auto Dictionary::strip_pfx_2_sfx_3(const Prefix<CharT>
  }
  
  template <Affixing_Mode m, class CharT>
@@ -189,7 +189,7 @@
  {
  	auto& prefixes = get_structures<CharT>().prefixes;
  	auto& suffixes = get_structures<CharT>().suffixes;
-@@ -983,7 +985,7 @@
+@@ -983,7 +985,7 @@ template <Affixing_Mode m, class CharT>
  auto Dictionary::strip_s_p_s_3(const Suffix<CharT>& se1,
                                 const Prefix<CharT>& pe1,
                                 std::basic_string<CharT>& word) const
@@ -198,7 +198,7 @@
  {
  	auto& dic = words;
  	auto& suffixes = get_structures<CharT>().suffixes;
-@@ -1016,7 +1018,7 @@
+@@ -1016,7 +1018,7 @@ auto Dictionary::strip_s_p_s_3(const Suffix<CharT>& se
  			//    word_flags.contains(compound_onlyin_flag))
  			//	continue;
  			// needflag check here if needed
@@ -207,7 +207,7 @@
  		}
  	}
  
-@@ -1024,8 +1026,9 @@
+@@ -1024,8 +1026,9 @@ auto Dictionary::strip_s_p_s_3(const Suffix<CharT>& se
  }
  
  template <Affixing_Mode m, class CharT>
@@ -219,7 +219,7 @@
  {
  	auto& suffixes = get_structures<CharT>().suffixes;
  
-@@ -1059,7 +1062,7 @@
+@@ -1059,7 +1062,7 @@ template <Affixing_Mode m, class CharT>
  auto Dictionary::strip_2_sfx_pfx_3(const Suffix<CharT>& se1,
                                     const Suffix<CharT>& se2,
                                     std::basic_string<CharT>& word) const
@@ -228,7 +228,7 @@
  {
  	auto& dic = words;
  	auto& prefixes = get_structures<CharT>().prefixes;
-@@ -1088,7 +1091,7 @@
+@@ -1088,7 +1091,7 @@ auto Dictionary::strip_2_sfx_pfx_3(const Suffix<CharT>
  			//    word_flags.contains(compound_onlyin_flag))
  			//	continue;
  			// needflag check here if needed
@@ -237,7 +237,7 @@
  		}
  	}
  
-@@ -1096,8 +1099,9 @@
+@@ -1096,8 +1099,9 @@ auto Dictionary::strip_2_sfx_pfx_3(const Suffix<CharT>
  }
  
  template <Affixing_Mode m, class CharT>
@@ -249,7 +249,7 @@
  {
  	auto& prefixes = get_structures<CharT>().prefixes;
  	auto& suffixes = get_structures<CharT>().suffixes;
-@@ -1134,7 +1138,7 @@
+@@ -1134,7 +1138,7 @@ template <Affixing_Mode m, class CharT>
  auto Dictionary::strip_sfx_2_pfx_3(const Suffix<CharT>& se1,
                                     const Prefix<CharT>& pe1,
                                     std::basic_string<CharT>& word) const
@@ -258,7 +258,7 @@
  {
  	auto& dic = words;
  	auto& prefixes = get_structures<CharT>().prefixes;
-@@ -1158,7 +1162,7 @@
+@@ -1158,7 +1162,7 @@ auto Dictionary::strip_sfx_2_pfx_3(const Suffix<CharT>
  				continue;
  			if (!cross_valid_inner_outer(word_flags, pe2))
  				continue;
@@ -267,7 +267,7 @@
  		}
  	}
  
-@@ -1166,8 +1170,9 @@
+@@ -1166,8 +1170,9 @@ auto Dictionary::strip_sfx_2_pfx_3(const Suffix<CharT>
  }
  
  template <Affixing_Mode m, class CharT>
@@ -279,7 +279,7 @@
  {
  	auto& prefixes = get_structures<CharT>().prefixes;
  	auto& suffixes = get_structures<CharT>().suffixes;
-@@ -1202,7 +1207,7 @@
+@@ -1202,7 +1207,7 @@ template <Affixing_Mode m, class CharT>
  auto Dictionary::strip_p_s_p_3(const Prefix<CharT>& pe1,
                                 const Suffix<CharT>& se1,
                                 std::basic_string<CharT>& word) const
@@ -288,7 +288,7 @@
  {
  	auto& dic = words;
  	auto& prefixes = get_structures<CharT>().prefixes;
-@@ -1231,7 +1236,7 @@
+@@ -1231,7 +1236,7 @@ auto Dictionary::strip_p_s_p_3(const Prefix<CharT>& pe
  				continue;
  			if (!cross_valid_inner_outer(word_flags, pe2))
  				continue;
@@ -297,7 +297,7 @@
  		}
  	}
  
-@@ -1239,8 +1244,9 @@
+@@ -1239,8 +1244,9 @@ auto Dictionary::strip_p_s_p_3(const Prefix<CharT>& pe
  }
  
  template <Affixing_Mode m, class CharT>
@@ -309,7 +309,7 @@
  {
  	auto& prefixes = get_structures<CharT>().prefixes;
  
-@@ -1274,7 +1280,7 @@
+@@ -1274,7 +1280,7 @@ template <Affixing_Mode m, class CharT>
  auto Dictionary::strip_2_pfx_sfx_3(const Prefix<CharT>& pe1,
                                     const Prefix<CharT>& pe2,
                                     std::basic_string<CharT>& word) const
@@ -318,7 +318,7 @@
  {
  	auto& dic = words;
  	auto& suffixes = get_structures<CharT>().suffixes;
-@@ -1300,7 +1306,7 @@
+@@ -1300,7 +1306,7 @@ auto Dictionary::strip_2_pfx_sfx_3(const Prefix<CharT>
  			if (!cross_valid_inner_outer(word_flags, se1))
  				continue;
  			// needflag check here if needed

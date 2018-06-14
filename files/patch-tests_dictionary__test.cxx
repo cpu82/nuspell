@@ -1,6 +1,6 @@
---- tests/dictionary_test.cxx.orig	2018-06-13 22:45:09.000000000 +0200
-+++ tests/dictionary_test.cxx	2018-06-14 11:40:43.153285000 +0200
-@@ -54,9 +54,15 @@
+--- tests/dictionary_test.cxx.orig	2018-06-13 20:45:09 UTC
++++ tests/dictionary_test.cxx
+@@ -54,9 +54,15 @@ TEST_CASE("suffixes", "[dictionary]")
  	auto d = Dictionary();
  	d.set_encoding_and_language("UTF-8");
  

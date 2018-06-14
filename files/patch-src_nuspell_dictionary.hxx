@@ -1,6 +1,6 @@
---- src/nuspell/dictionary.hxx.orig	2018-06-13 00:10:53.396428000 +0200
-+++ src/nuspell/dictionary.hxx	2018-06-13 00:11:16.140737000 +0200
-@@ -82,9 +82,10 @@
+--- src/nuspell/dictionary.hxx.orig	2018-06-13 20:45:09 UTC
++++ src/nuspell/dictionary.hxx
+@@ -82,9 +82,10 @@ class Dictionary : public Aff_Data {
  	 * @return if found, root word + prefix
  	 */
  	template <Affixing_Mode m = FULL_WORD, class CharT>
@@ -14,7 +14,7 @@
  
  	/**
  	 * @brief strip_suffix_only
-@@ -92,9 +93,10 @@
+@@ -92,9 +93,10 @@ class Dictionary : public Aff_Data {
  	 * @return if found, root word + suffix
  	 */
  	template <Affixing_Mode m = FULL_WORD, class CharT>
@@ -28,7 +28,7 @@
  
  	/**
  	 * @brief strip_prefix_then_suffix
-@@ -108,15 +110,15 @@
+@@ -108,15 +110,15 @@ class Dictionary : public Aff_Data {
  	template <Affixing_Mode m = FULL_WORD, class CharT>
  	auto strip_prefix_then_suffix(std::basic_string<CharT>& s) const
  	    -> boost::optional<
@@ -48,7 +48,7 @@
  
  	/**
  	 * @brief strip_suffix_then_prefix
-@@ -130,98 +132,110 @@
+@@ -130,98 +132,110 @@ class Dictionary : public Aff_Data {
  	template <Affixing_Mode m = FULL_WORD, class CharT>
  	auto strip_suffix_then_prefix(std::basic_string<CharT>& s) const
  	    -> boost::optional<
