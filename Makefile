@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	nuspell
-PORTVERSION=	g20180617
+PORTVERSION=	g20180618
 CATEGORIES=	textproc
 
 MAINTAINER=	cpm@FreeBSD.org
@@ -31,7 +31,7 @@ TEST_TARGET=	check
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	hunspell
-GH_TAGNAME=	2289afc
+GH_TAGNAME=	c805eab
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|%%PREFIX%%|${PREFIX}|g' ${WRKSRC}/src/tools/hunspell.cxx
