@@ -1,17 +1,18 @@
---- tests/Makefile.am.orig	2018-06-14 09:57:47 UTC
+--- tests/Makefile.am.orig	2018-06-23 15:54:36 UTC
 +++ tests/Makefile.am
-@@ -1,21 +1,11 @@
+@@ -1,22 +1,12 @@
  SUBDIRS = . suggestiontest v1cmdline
  
 -AM_CPPFLAGS = -I../src/nuspell $(BOOST_CPPFLAGS) $(CODE_COVERAGE_CPPFLAGS)
 +AM_CPPFLAGS = -I../src/nuspell $(BOOST_CPPFLAGS) $(CATCH_CFLAGS) $(CODE_COVERAGE_CPPFLAGS)
  AM_CXXFLAGS = -std=c++14 $(CODE_COVERAGE_CXXFLAGS)
  AM_LDFLAGS  = $(BOOST_LOCALE_LDFLAGS)
- LDADD = ../src/nuspell/libnuspell.a $(BOOST_LOCALE_LIBS) $(CODE_COVERAGE_LIBS) $(ICU_LIBS)
+ LDADD = ../src/nuspell/libnuspell.a $(BOOST_LOCALE_LIBS) $(ICU_LIBS) \
+         $(CODE_COVERAGE_LIBS)
  
  
 -BUILT_SOURCES = catch.hpp catch_reporter_tap.hpp
--catch_url = https://raw.githubusercontent.com/catchorg/Catch2/v2.2.2
+-catch_url = https://raw.githubusercontent.com/catchorg/Catch2/master
 -catch.hpp:
 -	wget $(catch_url)/single_include/catch.hpp
 -
@@ -23,7 +24,7 @@
  TEST_EXTENSIONS = .catch
  CATCH_LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) $(top_srcdir)/tap-driver.sh
  CATCH_LOG_COMPILER = $(SHELL) $(srcdir)/catch-runner.sh
-@@ -36,9 +26,6 @@ structures_test.cxx \
+@@ -37,9 +27,6 @@ structures_test.cxx \
  dictionary_test.cxx \
  aff_data_test.cxx \
  catch_main.cxx
